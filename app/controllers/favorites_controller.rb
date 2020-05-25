@@ -15,11 +15,19 @@ class FavoritesController < ApplicationController
     end
 
     def create
-        
+        favorite = Favorite.create(user_id: params[:user_id], movie_id: params[:movie_id])
+        movie = Movie.find(favorite.movie_id)
+        render json: movie
+ 
     end
 
-    def delete
-
+    def destroy
+        movie = Movie.find(params[:movie_id])
+        favorite = Favorite.find_by(movie_id: movie.id, user_id: params[:user_id])
+        
+        favorite.destroy
+       
+        render json: movie
     end
 
 end
