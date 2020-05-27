@@ -6,4 +6,7 @@ Rails.application.routes.draw do
 
   post "/login", to: "users#login"
   delete "/favorites", to: "favorites#destroy"
+
+  # This route is to activate the token authentication 
+  get "/login", to: "users#token_authenticate"
 end
