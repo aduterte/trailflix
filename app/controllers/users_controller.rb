@@ -16,7 +16,10 @@ class UsersController < ApplicationController
         user = User.create(name: params[:name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
         if user.valid?
             user.save
-            render json: user
+            payload = {user_id: user.id}
+            token = encode(payload)
+            
+            render :json => {user: user.as_json(include: [:movies], except: [:created_at, :updated_at]), token: token}
         else
             render json: user.errors.full_messages
         end
