@@ -48,7 +48,7 @@ class UsersController < ApplicationController
         token = request.headers["Authenticate"]
         user = User.find(decode(token)["user_id"])
         render json: user.as_json(include: [:movies], except: [:created_at, :updated_at])
-        # render :json => {user: user.as_json(include: [:movies] ,except: [:created_at, :updated_at])}
+        
     end
 
 
