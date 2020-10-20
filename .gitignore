@@ -28,3 +28,7 @@
 
 #ignore movie files
 /public/movies/*
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
